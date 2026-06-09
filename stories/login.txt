@@ -1,0 +1,5 @@
+A user with valid credentials (username: standard_user, password: secret_sauce) navigates to
+the login page and lands on the inventory page after clicking Login.
+
+An invalid password (username: standard_user, password: wrong_password) shows an error
+message on the login page.

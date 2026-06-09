@@ -1,0 +1,27 @@
+{
+  "source_story": "stories/login.txt",
+  "tests": [
+    {
+      "test_name": "test_valid_credentials_reach_inventory",
+      "description": "A user with valid credentials lands on the inventory page after login",
+      "steps": [
+        {"action": "navigate", "target": null, "value": "https://www.saucedemo.com"},
+        {"action": "fill", "target": "username_input", "value": "standard_user"},
+        {"action": "fill", "target": "password_input", "value": "secret_sauce"},
+        {"action": "click", "target": "login_button", "value": null},
+        {"action": "assert_visible", "target": "inventory_container", "value": null}
+      ]
+    },
+    {
+      "test_name": "test_invalid_password_shows_error",
+      "description": "An invalid password shows an error message on the login page",
+      "steps": [
+        {"action": "navigate", "target": null, "value": "https://www.saucedemo.com"},
+        {"action": "fill", "target": "username_input", "value": "standard_user"},
+        {"action": "fill", "target": "password_input", "value": "wrong_password"},
+        {"action": "click", "target": "login_button", "value": null},
+        {"action": "assert_visible", "target": "error_message", "value": null}
+      ]
+    }
+  ]
+}
