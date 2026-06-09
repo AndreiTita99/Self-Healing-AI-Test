@@ -1,0 +1,29 @@
+username_input:
+  selector: "#user-name"
+  description: "Username text input on the login form"
+  role: "textbox"
+  expected_text: ""
+
+password_input:
+  selector: "#password"
+  description: "Password text input on the login form"
+  role: "textbox"
+  expected_text: ""
+
+login_button:
+  selector: "#login-button"
+  description: "The primary button that submits the login form"
+  role: "button"
+  expected_text: "Login"
+
+inventory_container:
+  selector: ".inventory_container"
+  description: "Main container holding inventory items after successful login"
+  role: "generic"
+  expected_text: ""
+
+error_message:
+  selector: "[data-test='error']"
+  description: "Error message displayed when login credentials are invalid"
+  role: "generic"
+  expected_text: ""
