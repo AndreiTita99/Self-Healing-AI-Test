@@ -1,6 +1,7 @@
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+markers = ["skipif: built-in conditional skip marker"]
 
 [tool.ruff]
 line-length = 100

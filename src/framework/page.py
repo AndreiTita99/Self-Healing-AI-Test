@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 
 class HealableLocator:
-    """Proxies a Playwright Locator; on TimeoutError triggers the healing engine."""
+    """Proxies a Playwright Locator; on TimeoutError calls the healing engine and retries."""
 
     def __init__(
         self,
@@ -38,7 +38,16 @@ class HealableLocator:
             try:
                 return attr(*args, **kwargs)
             except PlaywrightTimeoutError:
-                self._engine.propose(self._record, self._page, self._test_name)
+                try:
+                    new_selector = self._engine.heal(
+                        self._record, self._page, self._test_name
+                    )
+                except Exception:
+                    new_selector = None
+
+                if new_selector is not None:
+                    healed = self._page.locator(new_selector)
+                    return getattr(healed, name)(*args, **kwargs)
                 raise
 
         return wrapper

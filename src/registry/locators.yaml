@@ -27,3 +27,10 @@ error_message:
   description: "Error message displayed when login credentials are invalid"
   role: "generic"
   expected_text: ""
+
+# Intentionally broken selector used to demonstrate self-healing in test_heal_demo.py
+login_button_broken:
+  selector: "#login-btn"
+  description: "The primary button that submits the login form"
+  role: "button"
+  expected_text: "Login"
