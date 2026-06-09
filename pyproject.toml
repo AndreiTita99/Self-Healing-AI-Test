@@ -2,6 +2,9 @@
 testpaths = ["tests"]
 pythonpath = ["."]
 markers = ["skipif: built-in conditional skip marker"]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(levelname)-8s %(name)s: %(message)s"
 
 [tool.ruff]
 line-length = 100
