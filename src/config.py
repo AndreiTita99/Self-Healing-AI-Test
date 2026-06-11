@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     base_url: str = "https://www.saucedemo.com"
     headless: bool = True
     heal_confidence_threshold: float = 0.8
+    locator_timeout_ms: int = 5000
 
 
 settings = Settings()

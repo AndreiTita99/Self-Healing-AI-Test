@@ -6,6 +6,7 @@ from playwright.sync_api import Locator
 from playwright.sync_api import Page as PlaywrightPage
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
+from src.config import settings
 from src.registry.registry import LocatorRecord, LocatorRegistry
 
 if TYPE_CHECKING:
@@ -65,6 +66,9 @@ class BasePage:
         self._registry = registry
         self._healing_engine = healing_engine
         self._test_name = test_name
+        # Short action timeout: a broken locator fails fast so healing kicks in
+        # quickly instead of leaving the browser idle for Playwright's 30s default.
+        page.set_default_timeout(settings.locator_timeout_ms)
 
     def navigate(self, url: str) -> None:
         self._page.goto(url)
